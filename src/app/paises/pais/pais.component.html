@@ -1,0 +1,15 @@
+<img src={{pais.flags.png}} alt="bandera" class="card-img-top border border-secondary">
+<div class="card-body">
+    <h5 class="card-title">{{pais.name.common}}</h5>
+    <p class="card-text">Población: {{pais.population | number }}</p>
+</div>
+
+<button type="button"
+class="btn btn-primary"
+data-bs-toggle="modal"
+data-bs-target="#ver-masModal"
+(click)="verMas()">
+  Detalles...
+</button>
+
+

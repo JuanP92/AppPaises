@@ -1,0 +1,41 @@
+<!---
+<div class="row">
+  <div *ngFor="let p of paises; index as i" class="col-4 ">
+    <div *ngIf="i>2; else elseBlock">
+      <app-pais #pais
+        [pais]="p"
+        class="pais card border-primary mb-3 p-3 d-none"
+        (onPaisModal)="seleccionarPais( $event )">
+      </app-pais>
+    </div>
+    <ng-template #elseBlock>
+      <app-pais #pais
+        [pais]="p"
+        class="pais card border-primary mb-3 p-3"
+        (onPaisModal)="seleccionarPais( $event )">
+      </app-pais>
+    </ng-template>
+  </div>
+</div>
+-->
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let p of paises; index as i">
+      <ng-container *ngIf="p.visibilidad">
+        <app-pais #pais
+        [pais]="p"
+        class="pais card border-primary mb-3 p-3 col mx-1"
+        (onPaisModal)="seleccionarPais( $event )">
+      </app-pais>
+    </ng-container>
+  </ng-container>
+</div>
+</div>
+<app-navegacion
+  [paginas]="this.cantidadPages"
+  (onPaisPagina)="cambiarPagina( $event )">
+</app-navegacion>
+
+<app-pais-modal
+  [pais]="this.paisSelect"
+></app-pais-modal>

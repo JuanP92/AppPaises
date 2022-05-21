@@ -1,0 +1,39 @@
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+
+    <ng-template [ngIf]="this.paginaActiva === 1" [ngIfElse]="elseBlock">
+      <li id="previous" class="page-item disabled" #previus>
+        <a class="page-link" href="#" (click)="cambiarPagina3(this.paginaActiva-1)">Previous</a>
+      </li>
+    </ng-template>
+    <ng-template #elseBlock>
+      <li id="previous" class="page-item" #previus>
+        <a class="page-link" href="#" (click)="cambiarPagina3(this.paginaActiva-1)">Previous</a>
+      </li>
+    </ng-template>
+
+    <ng-container *ngFor="let item of crearNavegacion(); index as i">
+      <ng-template [ngIf]="this.paginaActiva === i+1" [ngIfElse]="elseBlock2">
+        <li class="page-item active" #pagina>
+          <a href="#" class="page-link" (click)="cambiarPagina3( i+1 )" id="pagina-{{i+1}}">{{i+1}}</a>
+        </li>
+      </ng-template>
+      <ng-template #elseBlock2>
+        <li class="page-item" #pagina>
+          <a href="#" class="page-link" (click)="cambiarPagina3( i+1 )" id="pagina-{{i+1}}">{{i+1}}</a>
+        </li>
+      </ng-template>
+    </ng-container>
+
+    <ng-template [ngIf]="this.paginaActiva === this.paginas" [ngIfElse]="elseBlock3">
+      <li id="next" class="page-item disabled" #next>
+        <a class="page-link" href="#" (click)="cambiarPagina3(this.paginaActiva+1)">Next</a>
+      </li>
+    </ng-template>
+    <ng-template #elseBlock3>
+      <li id="next" class="page-item" #next>
+        <a class="page-link" href="#" (click)="cambiarPagina3(this.paginaActiva+1)">Next</a>
+      </li>
+    </ng-template>
+  </ul>
+</nav>
